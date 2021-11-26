@@ -62,13 +62,13 @@ class richGUI():
         """
         Called when a player has won.
         """
-        congratsMsg = "Congratulations!"
-        winningPlayerMsg = f"{player} WINS!"
-        goodjobMsg = "Good Work!"
+        congrats = "Congradulations!"
+        playe = f"{player} WINS!"
+        goodjob = "Good Work!"
         console.print(f"╭────────────────────────────╮", style='magenta')
-        console.print(f"[magenta]│[/]{congratsMsg:^28}[magenta]│[/]")
-        console.print(f"[magenta]│[/]{winningPlayerMsg:^28}[magenta]│[/]")
-        console.print(f"[magenta]│[/]{goodjobMsg:^28}[magenta]│[/]")
+        console.print(f"[magenta]│[/]{congrats:^28}[magenta]│[/]")
+        console.print(f"[magenta]│[/]{playe:^28}[magenta]│[/]")
+        console.print(f"[magenta]│[/]{goodjob:^28}[magenta]│[/]")
         console.print(f"╰────────────────────────────╯", style="magenta")
 
     def updateP1Name(self, player):

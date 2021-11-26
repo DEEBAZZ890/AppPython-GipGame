@@ -13,7 +13,6 @@ import pygame
 from player import Player
 from dice import Dice
 
-
 class GipGame():
     def __init__(self):
         self.player1 = Player(name="Player 1")
@@ -38,24 +37,21 @@ class GipGame():
             roll = Dice.roll()
             print(f"Rolled: -------------------- {roll}")
             if roll == 1:
-                # if player rolls a 1, they do not get to go again and temp score = 0
-                print(
-                    f"Sorry, YOUR TURN IS OVER. -------- Total: {player.getscore()} ---------- Lost: {tempscore} -------------------")
+                #if player rolls a 1, they do not get to go again and temp score = 0
+                print(f"Sorry, YOUR TURN IS OVER. -------- Total: {player.getscore()} ---------- Lost: {tempscore} -------------------")
                 input()
-                rollAgain = "f"  # Changed this variable from "n" to "f" as to not add the score when they lost that round
+                rollAgain = "f" # Changed this variable from "n" to "f" as to not add the score when they lost that round
             else:
                 tempscore += roll
                 if player.getscore() + tempscore > 100:
                     player.addScore(tempscore)
                     return
                 else:
-                    rollAgain = input(
-                        f"{player.getname()}'s current count: -- {tempscore} \nRoll again? Y/N \n").lower()
+                    rollAgain = input(f"{player.getname()}'s current count: -- {tempscore} \nRoll again? Y/N \n").lower()
 
         if rollAgain == "n":
             player.addScore(tempscore)
-            print(
-                f"-------- {player.getname()} ----------- New Total: {player.getscore()} --------------------------------------")
+            print(f"-------- {player.getname()} ----------- New Total: {player.getscore()} --------------------------------------")
             print()
             return
 
@@ -95,3 +91,4 @@ if __name__ == '__main__':
     gipgame.startGame()
     if gipgame.continueGame == 'y':
         gipgame.mainloop()
+

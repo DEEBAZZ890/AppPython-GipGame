@@ -18,6 +18,7 @@ from rich.console import Console
 
 console = Console()
 
+
 class GipGame():
     def __init__(self):
         self.player1 = Player(name="Player 1")
@@ -49,6 +50,7 @@ class GipGame():
             if roll == 1:
                 # if player rolls a 1, they do not get to go again and temp score = 0
                 self.gui.printGUI()
+                
                 currentPlayersName = player.getname()
                 if currentPlayersName == self.player1.getname():
                     console.print(f":pig2: {currentPlayersName}, you rolled 1. Turn Terminated"
@@ -62,6 +64,11 @@ class GipGame():
                                   f" press 'enter' to start your next turn: ", style="bold red")
                     input()
                     rollAgain = "f"  # Changed this variable from "n" to "f" as to not add the score when they lost that round
+                
+                console.print(f":pig2: {player.getname()}! TURN TERMINATED! :pig2:", style="bold red")
+                input()
+                rollAgain = "f"  # Changed this variable from "n" to "f" as to not add the score when they lost that round
+            
             else:
                 tempscore += roll
                 self.gui.updateTemp(tempscore)
@@ -106,12 +113,14 @@ class GipGame():
             "> First Person to 100 wins.",
             "> Good Luck."]
 
+
         intro = input("\nWould you like to learn the Rules of Gip Game? [Y/N]: ")
 
         if intro.upper() == "Y":
             for message in tutorial:
                 print(message)
                 sleep(3)
+                
         elif intro.upper() == "N":
             pass
         else:
@@ -129,12 +138,17 @@ class GipGame():
         print("Game Setup:")
         self.player1.changeName(input("Player 1, enter your name: "))
         self.player2.changeName(input("Player 2, enter your name: "))
+
         self.continueGame = input(f"Start game? Y/N: ").lower()
         self.introMessage()
         if self.continueGame == "y":
             print("\n<><><><><> Game Started <><><><><>\n".center(50))
         else:
             print("Game Ended")
+
+        self.introMessage()
+        self.continueGame = input(f"Start game? Y/N ").lower()
+
 
     def mainloop(self):
         """
@@ -154,4 +168,3 @@ if __name__ == '__main__':
     gipgame.startGame()
     if gipgame.continueGame == 'y':
         gipgame.mainloop()
-
